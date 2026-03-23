@@ -1,0 +1,42 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def delete_node(self, key):
+        # Store head node
+        temp = self.head
+
+        # If head node itself holds the key to be deleted
+        if temp is not None:
+            if temp.value == key:
+                self.head = temp.next  # Changed head
+                temp = None  # Free memory
+                return
+
+        # Search for the key to be deleted, keep track of the previous node
+        # as we need to change 'prev.next'
+        while temp is not None:
+            if temp.value == key:
+                break
+            prev = temp
+            temp = temp.next
+
+        # If key was not present in linked list
+        if temp == None:
+            return
+
+        # Unlink the node from linked list
+        prev.next = temp.next
+        temp = None  # Free memory
+
+    def print_list(self):
+        temp = self.head
+        while temp:
+            print(temp.value, end=" ")
+            temp = temp.next
+        print()
