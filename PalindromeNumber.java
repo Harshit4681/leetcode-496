@@ -1,8 +1,6 @@
-import java.util.*;
+﻿public class PalindromeNumber {
 
-class Solution {
-    public boolean isPalindrome(int x) {
-        // Negative numbers are never palindrome
+    public static boolean isPalindrome(int x) {
         if (x < 0) return false;
 
         int original = x;
@@ -15,5 +13,11 @@ class Solution {
         }
 
         return original == reversed;
+    }
+
+    public static void main(String[] args) {
+        int x = 121;
+
+        System.out.println(isPalindrome(x));
     }
 }
