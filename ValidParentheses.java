@@ -1,25 +1,32 @@
-import java.util.*;
+﻿import java.util.*;
 
-class Solution {
-    public boolean isValid(String s) {
+public class ValidParentheses {
+
+    public static boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
 
-        for (char ch : s.toCharArray()) {
-            if (ch == '(' || ch == '{' || ch == '[') {
-                stack.push(ch);
+        for (char c : s.toCharArray()) {
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
             } else {
                 if (stack.isEmpty()) return false;
 
                 char top = stack.pop();
 
-                if ((ch == ')' && top != '(') ||
-                    (ch == '}' && top != '{') ||
-                    (ch == ']' && top != '[')) {
+                if ((c == ')' && top != '(') ||
+                    (c == '}' && top != '{') ||
+                    (c == ']' && top != '[')) {
                     return false;
                 }
             }
         }
 
         return stack.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        String s = "{[]}";
+
+        System.out.println(isValid(s));
     }
 }
